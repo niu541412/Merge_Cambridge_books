@@ -3,16 +3,17 @@
 #Requirement: Automator, img2pdf(package from python)
 
 function progressBar() {
-  full_len=$(($COLUMNS - 6))
+  full_len=$(($COLUMNS - 8))
   bar_len=$(($1 * $full_len / 100))
   rest_len=$(($full_len - $bar_len))
+  echo -n "["
   if [ $bar_len -ge 1 ]; then
     eval $(echo printf '"#%0.s"' {1..$bar_len})
   fi
   if [ $rest_len -ge 1 ]; then
-    eval $(echo printf '" %0.s"' {1..$rest_len})
+    eval $(echo printf '".%0.s"' {1..$rest_len})
   fi
-  printf "(%3d" ${1}
+  printf "](%3d" ${1}
   echo -ne "%)\r"
 }
 

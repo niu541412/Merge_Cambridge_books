@@ -12,12 +12,12 @@ function progressBar() {
   if [ $rest_len -ge 1 ]; then
     eval $(echo printf '" %0.s"' {1..$rest_len})
   fi
-  printf "(%3d" $1
+  printf "(%3d" ${1}
   echo -ne "%)\r"
 }
 
 tstart=$(date +%s)
-book_zip=$(ls *zip)
+book_zip=$(ls *.zip)
 if [ x"$book_zip" == x ]; then
   echo "No book archieves is found."
 else
